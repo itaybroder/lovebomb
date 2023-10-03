@@ -73,4 +73,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  html, body, main, #root {
+    height: 100%;
+  }
 }
