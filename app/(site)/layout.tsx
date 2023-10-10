@@ -1,5 +1,5 @@
 import Navbar from '@/components/layout/Navbar'
-
+import Sidebar from '@/components/layout/Sidebar'
 export default function RootLayout({
   children,
 }: {
@@ -7,11 +7,16 @@ export default function RootLayout({
 }) {
   return (
     <main>
-      <div className='h-[7%]'>
+      <div className='h-[9%]'>
         <Navbar />
       </div>
-      <div className='h-[93%]'> 
-        {children}
+      <div className='h-[90%] flex flex-row'> 
+        <div className='w-[20%] h-full'>
+          <Sidebar />
+        </div>
+        <div className='w-[80%] h-full'>
+          {children}
+        </div>
       </div>
     </main>        
   )
