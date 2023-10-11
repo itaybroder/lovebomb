@@ -1,10 +1,11 @@
 import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 import type { Metadata } from 'next'
+import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'Love Bomb',
-  description: 'A website for the Love Bomb whatsapp bot.',
+  description: 'A website for the bombing the media.',
 }
 
 export default function RootLayout({
@@ -23,6 +24,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
