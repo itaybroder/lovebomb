@@ -14,6 +14,7 @@ export default function RootLayout({
   return (
     <main>
       <div className='h-[9%] fixed w-full top-0 z-10'>
+        
         <Navbar
         isMobile={isMobile}
         />
