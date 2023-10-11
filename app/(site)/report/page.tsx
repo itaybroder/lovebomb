@@ -3,6 +3,9 @@ import React, { FC, useState } from "react";
 import { FlameKindling } from 'lucide-react'
 import Heading from "@/components/layout/PageHeading";
 import SimpleDropDown from "@/components/SimpleDropDown";
+import { TikTokEmbed } from 'react-social-media-embed';
+import { Button } from "@/components/ui/button";
+
 interface IProps {};
 
 const ReportPage:FC<IProps> = (props) => {
@@ -24,9 +27,15 @@ const ReportPage:FC<IProps> = (props) => {
             Each time you'll be shown an hateful post click on it and report it.
             You can use multiple reports for each post. You can also use our email program to create new users and thus create new reports."
         />
-        <div className="px-4 lg-px-8">
+        <div className="px-4 lg-px-8 mb-3">
             <SimpleDropDown platforms={platforms}/>
-
+        </div>
+        <div className="flex justify-center items-center w-full flex-col">
+            <div className="flex flex-row justify-between w-auto gap-12 mb-2" style={{width: '325px'}}>
+                <Button variant='outline' style={{width: '100%'}}>skip 👀</Button>
+                <Button variant="default" style={{width: '100%'}}>next 🔥</Button>
+            </div>
+            <TikTokEmbed url="https://www.tiktok.com/@epicgardening/video/7055411162212633903" width={325} />
         </div>
       
     </div>

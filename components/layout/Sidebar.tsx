@@ -11,19 +11,19 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col items-start p-4 h-full w-full border-x-2 justify-between" >  
         <div className="w-full">
-            <Button  className={`w-full mb-2 flex items-center justify-between font-mono ${isActive('/report') ? 'bg-red-500' : ''}`} variant='default' onClick={() => router.push('/report')} disabled={isActive('/report')}>
+            <Button  className={`w-full mb-2 flex items-center justify-between ${isActive('/report') ? 'bg-red-500' : ''}`} variant='default' onClick={() => router.push('/report')} disabled={isActive('/report')}>
             <FlameKindling size={30} />
             <span className="text-lg mt-1 mr-6 w-full text-center">Report </span>
             </Button>
-            <Button   className={`w-full mb-8 flex items-center justify-between font-mono bg-blue-500 hover:bg-blue-600`}      disabled={isActive('/like')} variant='default' onClick={() => router.push('/like')}>
+            <Button   className={`w-full mb-8 flex items-center justify-between  bg-blue-500 hover:bg-blue-600`}      disabled={isActive('/like')} variant='default' onClick={() => router.push('/like')}>
                 <Heart size={30} />
                 <span className="text-lg mt-1 mr-6 w-full text-center">Like </span>
             </Button>
-            <Button   className="w-full mb-2 flex items-center justify-between font-mono" variant={isActive('/dashboard') ? 'secondary' : 'outline'} onClick={() => router.push('/dashboard')}>
+            <Button   className="w-full mb-2 flex items-center justify-between " variant={isActive('/dashboard') ? 'secondary' : 'outline'} onClick={() => router.push('/dashboard')}>
                 <LayoutDashboard size={30} />
                 <span className="text-lg mt-1 mr-6 w-full text-center">Dashboard </span>
             </Button>
-            <Button   className="w-full mb-2 flex items-center justify-between font-mono" variant={isActive('/emails') ? 'secondary' : 'outline'} onClick={() => router.push('/emails')}>
+            <Button   className="w-full mb-2 flex items-center justify-between " variant={isActive('/emails') ? 'secondary' : 'outline'} onClick={() => router.push('/emails')}>
                 <Mail size={30} />
                 <span className="text-lg mt-1 mr-6 w-full text-center">Emails </span>
             </Button>
