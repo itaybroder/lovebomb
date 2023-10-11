@@ -19,10 +19,31 @@ model User {
   provider       String?
   accounts       Account[]
 
-  postsReported  String[] 
-  postsLiked     String[]
+  postsReported  ReportedPosts[]  
+  postsLiked     LikedPosts[]
   postsSkipped   String[]
 } 
+
+model ReportedPosts{
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    userId            String  @db.ObjectId
+    postId            String  @db.ObjectId
+    timestamp         DateTime
+    amountOfReports   Int
+
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LikedPosts{
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    userId            String  @db.ObjectId
+    postId            String  @db.ObjectId
+    timestamp         DateTime
+    amountOfReports   Int
+
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
@@ -48,6 +69,7 @@ model Posts {
   type        PostType
   platform    PostPlatfoms
 }
+
 
 enum PostPlatfoms{
   INSTAGRAM

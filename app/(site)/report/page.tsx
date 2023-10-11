@@ -1,23 +1,76 @@
 "use client"
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import { FlameKindling } from 'lucide-react'
 import Heading from "@/components/layout/PageHeading";
 import SimpleDropDown from "@/components/SimpleDropDown";
 import { TikTokEmbed } from 'react-social-media-embed';
 import { Button } from "@/components/ui/button";
 import confetti from 'canvas-confetti';
-
+import axios from 'axios';
+import { Posts } from "@prisma/client";
 interface IProps {};
 
 const ReportPage:FC<IProps> = (props) => {
     const [platform, setPlatform] = useState('tiktok') 
     const [isExploding, setIsExploding] = React.useState(false);
+    const [videos, setVideos] = useState<Posts[]>([]);
+    const [currentVideo, setCurrentVideo] = useState(0);
 
     const platforms = [
         { name: 'Tiktok', icon: '/tiktok.png' },
         { name: 'Instagram', icon: '/instagram.png' },
         { name: 'Twitter (X)', icon: '/twitter.png' },
     ];
+    
+    useEffect(() => {
+        axios.get('api/report')
+            .then(async (response) => {
+                await response.data;
+                setVideos(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    }, []);
+
+    useEffect(() => {
+        console.log(videos);
+        console.log(currentVideo);
+        console.log(videos[currentVideo]);
+        console.log(videos[currentVideo]?.url);
+        
+    }
+    , [videos]);
+
+    const handleNext = () => {
+        axios.post('api/report', { postId: videos[currentVideo]?.id, amount: 1 })
+            .then(response => {
+                setCurrentVideo(currentVideo + 1);
+                if (currentVideo >= videos.length) {
+                    setVideos(response.data);
+                    setCurrentVideo(0);
+                }
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    };
+
+    const handleSkip = () => {
+        axios.post('api/skip')
+            .then(response => {
+                setCurrentVideo(currentVideo + 1);
+                if (currentVideo >= videos.length) {
+                    setVideos(response.data);
+                    setCurrentVideo(0);
+                }
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    };
+    
+
     return <div className="mt-4">
         <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
         <Heading
@@ -35,12 +88,12 @@ const ReportPage:FC<IProps> = (props) => {
         </div>
         <div className="flex justify-center items-center w-full flex-col">
             <div className="flex flex-row justify-between w-auto gap-12 mb-2" style={{width: '325px'}}>
-                <Button variant='outline' style={{width: '100%'}}>skip 👀</Button>
+                <Button variant='outline' style={{width: '100%'}} onClick={handleSkip}>skip 👀</Button>
             <Button 
                 variant="default" 
                 style={{width: '100%'}} 
                 onClick={(event) => {
-                    
+                    handleNext();
                     const rect = event.currentTarget.getBoundingClientRect();
                     confetti({
                         particleCount: 300,
@@ -59,8 +112,7 @@ const ReportPage:FC<IProps> = (props) => {
            {/* <div className="absolute z-50 top-20 left-2">
             <img src="flame.gif" alt="" className="w-32 h-auto" />
            </div> */}
-            <TikTokEmbed url="https://www.tiktok.com/@epicgardening/video/7055411162212633903" width={325} />
-        </div>
+        <TikTokEmbed key={videos[currentVideo]?.url} url={videos[currentVideo]?.url ? videos[currentVideo]?.url : ''} width={325} />        </div>
       
     </div>
 };
