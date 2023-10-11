@@ -16,7 +16,7 @@ const LoginDialog:FC<IProps> = (props) => {
     return (
          <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Login</Button>
+        <Button variant="secondary">Sign in</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px] w-full">
         <LoginForm />

@@ -1,19 +1,16 @@
 "use client";
-
 import Image from "next/image";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import UserButton from "@/components/UserButton";
 import Link from "next/link";
 import {useRouter} from "next/navigation";
 import { ModeToggle } from "@/components/ModeToggle";
 import { Button } from "../ui/button";
 import LoginDialog from "../loginModal";
+import { signOut, useSession } from "next-auth/react";
+
 const Nav = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   return (
     <div className="flex items-center p-4  bg-background w-full sticky top-0 border-2 h-full" >  
         <div className='flex w-full justify-end ' >
@@ -23,9 +20,21 @@ const Nav = () => {
             </div>
             <div className="flex justify-end gap-3 w-full" >
               <div className="flex flex-row gap-2 items-center">
-                  <LoginDialog />
-                  <ModeToggle />
-
+                  {
+                  session?.user ? (
+                      <>
+                        <UserButton user={session.user} />
+                        <ModeToggle />
+                      </>
+                  ):(
+                    <>
+                      <LoginDialog />
+                      <ModeToggle />
+                    </>
+    
+                  )
+                  }
+                  
               </div>
             </div>
 
