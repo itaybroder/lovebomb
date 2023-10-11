@@ -12,6 +12,8 @@ interface IProps {};
 const ReportPage:FC<IProps> = (props) => {
     const [platform, setPlatform] = useState('tiktok') 
     const [isExploding, setIsExploding] = React.useState(false);
+    const gunshot = new Audio('/gunshot.mp3');
+
     const platforms = [
         { name: 'Tiktok', icon: '/tiktok.png' },
         { name: 'Instagram', icon: '/instagram.png' },
@@ -42,7 +44,7 @@ const ReportPage:FC<IProps> = (props) => {
                     
                     const rect = event.currentTarget.getBoundingClientRect();
                     confetti({
-                        particleCount: 100,
+                        particleCount: 300,
                         startVelocity: 30,
                         spread: 360,
                         origin: {
@@ -50,7 +52,6 @@ const ReportPage:FC<IProps> = (props) => {
                             y: (rect.y + rect.height / 2) / window.innerHeight
                         }
                     });
-                    const gunshot = new Audio('/gunshot.mp3');
                     gunshot.play();
                     gunshot.onended = function() {
                         gunshot.remove();
