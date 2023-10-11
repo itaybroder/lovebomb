@@ -21,7 +21,16 @@ const ReportPage:FC<IProps> = (props) => {
         { name: 'Instagram', icon: '/instagram.png' },
         { name: 'Twitter (X)', icon: '/twitter.png' },
     ];
-    
+    function get5Videos() {
+         axios.get('api/report')
+            .then(async (response) => {
+                await response.data;
+                setVideos(response.data);
+            })
+            .catch(error => {
+                console.error('There was an error!', error);
+            });
+    }
     useEffect(() => {
         axios.get('api/report')
             .then(async (response) => {
@@ -44,10 +53,10 @@ const ReportPage:FC<IProps> = (props) => {
 
     const handleNext = () => {
         axios.post('api/report', { postId: videos[currentVideo]?.id, amount: 1 })
-            .then(response => {
+            .then(async (response) => {
                 setCurrentVideo(currentVideo + 1);
                 if (currentVideo >= videos.length) {
-                    setVideos(response.data);
+                    await get5Videos();
                     setCurrentVideo(0);
                 }
             })
