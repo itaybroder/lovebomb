@@ -12,7 +12,6 @@ interface IProps {};
 const ReportPage:FC<IProps> = (props) => {
     const [platform, setPlatform] = useState('tiktok') 
     const [isExploding, setIsExploding] = React.useState(false);
-    const gunshot = new Audio('/gunshot.mp3');
 
     const platforms = [
         { name: 'Tiktok', icon: '/tiktok.png' },
@@ -52,10 +51,6 @@ const ReportPage:FC<IProps> = (props) => {
                             y: (rect.y + rect.height / 2) / window.innerHeight
                         }
                     });
-                    gunshot.play();
-                    gunshot.onended = function() {
-                        gunshot.remove();
-                    };
                 }}
             >
                 next one 🔥
