@@ -1,0 +1,46 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  margin:0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:rgb(255, 255, 255);
+  background-size: cover;
+  overflow: hidden;
+}
+.confetti-button {
+  outline: none;
+  border:none;
+  cursor: pointer;
+  width:100%;
+  height: 100%;
+  border-radius: 30px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color:#fff;
+  text-align: center;
+  background: #24cfaa;
+  box-shadow: 3px 3px 8px #303030a4,
+              3px 3px 8px #2c2c2c7e;
+  transition: 0.5s;
+}
+.confetti-button:hover {
+  background:#2fdbb6;
+}
+.confetti-button:active {
+  background:#1da88a;
+}
+.button-wrapper {
+  position: relative;
+  width:200px;
+  height:60px;
+}
+.button-wrapper canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
