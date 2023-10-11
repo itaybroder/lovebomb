@@ -58,9 +58,12 @@ const ReportPage:FC<IProps> = (props) => {
                     };
                 }}
             >
-                next 🔥
+                next one 🔥
             </Button>     
            </div>
+           {/* <div className="absolute z-50 top-20 left-2">
+            <img src="flame.gif" alt="" className="w-32 h-auto" />
+           </div> */}
             <TikTokEmbed url="https://www.tiktok.com/@epicgardening/video/7055411162212633903" width={325} />
         </div>
       

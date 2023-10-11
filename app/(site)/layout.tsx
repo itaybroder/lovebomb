@@ -12,22 +12,22 @@ export default function RootLayout({
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' })
   return (
     <main>
-      <div className='h-[9%]'>
+      <div className='h-[9%] fixed w-full top-0 z-10'>
         <Navbar />
       </div>
       {isMobile ? 
         <>
-          <MobileSidebar />
-          <div className='h-[calc(91% - 9%)] w-full'>
+          <div className='h-[calc(91% - 9%)] w-full pt-[9%]'>
+            <MobileSidebar />
             {children}
           </div>
         </>
       :
-        <div className='h-[90%] flex flex-row'> 
-          <div className='w-[20%] h-full'>
+        <div className='h-[90%] flex flex-row pt-[9%]'> 
+          <div className='w-[20%] h-full fixed left-0 top-[9%] z-10'>
             <Sidebar />
           </div>
-          <div className='w-[80%] h-full'>
+          <div className='w-[80%] h-full ml-[20%]'>
             {children}
           </div>
         </div>
