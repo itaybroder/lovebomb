@@ -45,7 +45,7 @@ const ReportPage:FC<IProps> = (props) => {
     , [videos]);
 
     const handleNext = () => {
-        window.navigator.vibrate(200);
+        // window.navigator.vibrate(200);
 
         axios.post('api/report', { postId: videos[currentVideo]?.id, amount: 1 })
             .then(async (response) => {
