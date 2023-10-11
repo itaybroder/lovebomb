@@ -32,14 +32,7 @@ const ReportPage:FC<IProps> = (props) => {
             });
     }
     useEffect(() => {
-        axios.get('api/report')
-            .then(async (response) => {
-                await response.data;
-                setVideos(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error!', error);
-            });
+       get5Videos()
     }, []);
 
     useEffect(() => {

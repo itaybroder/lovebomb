@@ -9,8 +9,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function UserButton ({ user }: {user:any}) {
+  const  pathname  = usePathname();
   return (
     <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -39,9 +41,10 @@ export default function UserButton ({ user }: {user:any}) {
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <button type='button' onClick={()=>{signOut({callbackUrl: `${window.location.origin}/login`})}}>
+                <button type='button' onClick={()=>{signOut({callbackUrl: `${window.location.origin}/${pathname}`})}}>
                   Sign Out
                 </button>
+                
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
