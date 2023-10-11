@@ -46,6 +46,14 @@ model Posts {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   url         String
   type        PostType
+  platform    PostPlatfoms
+}
+
+enum PostPlatfoms{
+  INSTAGRAM
+  TWITTER
+  TIKTOK
+  UNKNOWN
 }
 
 enum PostType {
