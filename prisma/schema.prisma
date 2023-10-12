@@ -21,10 +21,29 @@ model User {
 
   postsReported  ReportedPosts[]  
   postsLiked     LikedPosts[]
-  postsSkipped   String[]
+  skippedPosts   SkippedPosts[]
+  emails         Email[]
+
 } 
 
+model Email {
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  address String  @unique
+  userId  String  @db.ObjectId
+  user    User    @relation(fields: [userId], references: [id])
+}
+
 model ReportedPosts{
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    userId            String  @db.ObjectId
+    postId            String  @db.ObjectId
+    timestamp         DateTime
+    amountOfReports   Int
+
+    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SkippedPosts{
     id                String  @id @default(auto()) @map("_id") @db.ObjectId
     userId            String  @db.ObjectId
     postId            String  @db.ObjectId
@@ -43,7 +62,6 @@ model LikedPosts{
 
     user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
@@ -70,16 +88,19 @@ model Posts {
   platform    PostPlatfoms
 }
 
-
-enum PostPlatfoms{
-  INSTAGRAM
-  TWITTER
-  TIKTOK
-  UNKNOWN
-}
-
 enum PostType {
   BAD
   GOOD
   UNKNOWN
 }
+
+enum PostPlatfoms {
+  INSTAGRAM
+  TWITTER
+  TIKTOK
+  YOUTUBE
+  LINKEDIN
+  FACEBOOK
+  UNKNOWN
+}
+

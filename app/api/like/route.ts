@@ -38,8 +38,7 @@ export async function POST(req: NextRequest) {
       return new NextResponse("Post not found", { status: 404 });
     }
 
-
-    await prisma.reportedPosts.create({
+    await prisma.likedPosts.create({
       data: {
         postId: post.id,
         timestamp: new Date(),
@@ -110,7 +109,7 @@ export async function GET(req: NextRequest) {
     // Step 2: Fetch BAD posts excluding the reported ones
     const unreportedBadPosts = await prisma.posts.findMany({
       where: {
-        type: PostType.BAD,
+        type: PostType.GOOD,
         platform: platformDb,
         NOT: {
           id: {

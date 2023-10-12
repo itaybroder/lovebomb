@@ -38,8 +38,7 @@ export async function POST(req: NextRequest) {
       return new NextResponse("Post not found", { status: 404 });
     }
 
-
-    await prisma.reportedPosts.create({
+    await prisma.skippedPosts.create({
       data: {
         postId: post.id,
         timestamp: new Date(),

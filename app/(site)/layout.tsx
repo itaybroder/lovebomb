@@ -21,7 +21,7 @@ export default function RootLayout({
       </div>
       {isMobile ? 
         <>
-          <div className={`h-[calc(91% - 9%)] w-full ${isMiddle ? 'pt-[19%]' : 'pt-[10%]'}`}>
+          <div className={`h-[calc(91% - 9%)] w-full ${isMiddle ? 'pt-[24%]' : 'pt-[10%]'}`}>
             {children}
           </div>
         </>

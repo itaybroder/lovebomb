@@ -3,6 +3,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Toaster } from "@/components/ui/toaster"
 import  SessionProviderContext  from "@/app/context/AuthContext"
+import '@/components/firebaseConfig'; 
+
 export const metadata: Metadata = {
   title: 'Love Bomb',
   description: 'A website for the bombing the media.',

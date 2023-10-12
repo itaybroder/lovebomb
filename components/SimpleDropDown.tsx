@@ -24,11 +24,15 @@ interface Platform {
 
 interface SimpleDropDownProps {
   platforms: Platform[];
+  onChange: (platform: string) => void;
 }
 
-export default function SimpleDropDown({ platforms }: SimpleDropDownProps) {
+export default function SimpleDropDown({ platforms, onChange }: SimpleDropDownProps) {
   const [position, setPosition] = React.useState(platforms[0].name)
 
+  React.useEffect(() => {
+    onChange(position);
+  }, [position])
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -48,7 +52,7 @@ export default function SimpleDropDown({ platforms }: SimpleDropDownProps) {
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
           {platforms.map(platform => (
-            <DropdownMenuRadioItem value={platform.name} className="flex flex-row items-center gap-2">
+            <DropdownMenuRadioItem key={platform.name}  value={platform.name} className="flex flex-row items-center gap-2">
               <Image src={platform.icon} alt={platform.name} width={512} height={512} className="h-4 w-4"  />
               {platform.name}
             </DropdownMenuRadioItem>
