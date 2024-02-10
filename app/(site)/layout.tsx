@@ -28,7 +28,6 @@ export default function RootLayout({
       :
         <div className='h-[90%] flex flex-row pt-20'> 
           <div className='w-[20%] h-full fixed left-0 top-[9%] z-10'>
-            <Sidebar />
           </div>
           <div className='w-[80%] h-full ml-[20%]'>
             {children}

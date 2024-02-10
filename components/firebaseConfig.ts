@@ -2,14 +2,14 @@ import firebase from "firebase/app";
 import "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAlNVUwC1Gp_VaG9fRe-qYkf10p4fAn-4w",
-  authDomain: "botnet-5fb37.firebaseapp.com",
-  databaseURL: "https://botnet-5fb37-default-rtdb.firebaseio.com",
-  projectId: "botnet-5fb37",
-  storageBucket: "botnet-5fb37.appspot.com",
-  messagingSenderId: "564484353712",
-  appId: "1:564484353712:web:2b5e49a102c40ee05b9575",
-  measurementId: "G-YYQ3QEH7L4",
+  apiKey: "AIzaSyBEXCREPIam-EPVk2CXyJyhJnD0Q8o69nM",
+  authDomain: "loveroulette-c49b6.firebaseapp.com",
+  databaseURL: "https://loveroulette-c49b6-default-rtdb.firebaseio.com",
+  projectId: "loveroulette-c49b6",
+  storageBucket: "loveroulette-c49b6.appspot.com",
+  messagingSenderId: "792791729660",
+  appId: "1:792791729660:web:41cbba1fd97d3ef13a9e79",
+  measurementId: "G-R3RMM4SVED"
 };
 // Initialize Firebase
 if (!firebase.apps.length) {

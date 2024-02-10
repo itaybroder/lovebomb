@@ -16,7 +16,7 @@ const Nav = ({isMobile}: {isMobile: boolean}) => {
         <div className='flex w-full justify-end ' >
             <div className="flex w-full flex-row items-center gap-2">
                 <Image src='/logo.png' alt='logo' width={1024} height={1024} className="h-10 w-10 rounded" />
-                <h2 className="text-xl font-mono">IronTruth</h2>
+                <h2 className="text-xl font-mono">Email Generator</h2>
                 {isMobile && (<MobileSideBar/>)}
             </div>
             
